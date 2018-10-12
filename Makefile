@@ -6,7 +6,7 @@
 #    By: ftourret <ftourret@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/10/02 10:51:00 by ftourret     #+#   ##    ##    #+#        #
-#    Updated: 2018/10/09 11:42:01 by ftourret    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/10/12 15:22:11 by ftourret    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -93,19 +93,18 @@ LIGHT_GREEN = \033[0;38;5;121m
 
 GREEN = \033[33;32m
 
-PURPLE = \033[33;35m
-
 all: $(NAME)
 
 $(NAME): $(OBJ)
+	@echo "$(BLUE)\nFichiers compilés"
 	@ar rc $(NAME) $(OBJ)
-	@echo "$(GREEN)Creation de la libft"
+	@echo "$(LIGHT_GREEN)Creation de la libft"
 	@ranlib $(NAME)
-	@echo "$(PURPLE)Indexation de la libft"
+	@echo "$(GREEN)Indexation de la libft"
 
-%.o: srcs/%.c
+%.o: srcs/%.c libft.h
 	@gcc $(FLAGS) -o $@ -c $<
-	@echo "$(BLUE)Creation de $(LIGHT_GREEN)$@"
+	@echo "$(BLUE).\c"
 
 clean:
 	@rm -rf $(OBJ)
